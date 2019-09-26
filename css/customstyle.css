@@ -1,0 +1,256 @@
+html,
+body {
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.container {
+	width: 100%;
+	height: 100%;
+}
+#search {
+	width: 120px;
+	margin-left: 25px;
+	padding: 3px 5px 1px;
+	font-size: 12px;
+}
+/* .searchEl:after {
+	display: block;
+	content: "";
+	background: url(https://d2zjg0qo565n2.cloudfront.net/sites/default/files/2016-rebrand/header-icons/Homepage_Search_Icon.png)
+		no-repeat;
+	height: 20px;
+	margin-top: -36px;
+	margin-left: 74px;
+} */
+/* 状态线 */
+.status_line {
+	background-color: #0ca30a;
+}
+.gantt_marker.today {
+	background: #ffb121;
+}
+.end_date {
+	background: red;
+}
+/* 按钮组样式 */
+.btn-box {
+	display: flex;
+	padding: 0 60px;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	height: 4%;
+}
+
+.btn-box button {
+	margin: 0;
+	padding: 6px 15px;
+	border: 1px solid #ccc;
+	outline: none;
+	margin-right: 30px;
+	background: #fff;
+	color: #ccc;
+}
+.btn-box button:hover {
+	border-color: #4da1ff;
+	color: #4da1ff;
+}
+.iconfont {
+	margin-right: 4px;
+}
+
+/* 基准线 */
+.baseline {
+	position: absolute;
+	border-radius: 2px;
+	opacity: 0.7;
+	margin-top: -8px;
+	height: 6px;
+	background: #444;
+	border: 1px solid rgb(19, 20, 122);
+}
+
+/* move task lines upper */
+.gantt_task_line,
+.gantt_line_wrapper {
+	margin-top: -9px;
+}
+
+.gantt_side_content {
+	margin-bottom: 7px;
+}
+
+.gantt_task_link .gantt_link_arrow {
+	margin-top: -12px;
+}
+
+.gantt_side_content.gantt_right {
+	bottom: 0;
+}
+/* .btn-box .icon-up-down {
+	font-size: 20px;
+} */
+.custom-project {
+	position: absolute;
+	height: 6px;
+	color: #ffffff;
+	background-color: #444444;
+}
+
+.custom-project div {
+	position: absolute;
+}
+
+.project-left,
+.project-right {
+	top: 6px;
+	background-color: transparent;
+	border-style: solid;
+	width: 0px;
+	height: 0px;
+}
+
+.project-left {
+	left: 0px;
+	border-width: 0px 0px 8px 7px;
+	border-top-color: transparent;
+	border-right-color: transparent !important;
+	border-bottom-color: transparent !important;
+	border-left-color: #444444 !important;
+}
+
+.project-right {
+	right: 0px;
+	border-width: 0px 7px 8px 0px;
+	border-top-color: transparent;
+	border-right-color: #444444;
+	border-bottom-color: transparent !important;
+	border-left-color: transparent;
+}
+
+.project-line {
+	font-weight: bold;
+}
+
+.gantt_task_line,
+.gantt_line_wrapper div {
+	background-color: blue;
+	border-color: blue;
+	background: url(../img/taskbg.gif) repeat-x;
+	border-radius: 0;
+}
+
+.gantt_link_arrow {
+	background: blue;
+	border-color: blue;
+}
+
+.gantt_task_link:hover .gantt_line_wrapper div {
+	background: blue;
+	box-shadow: 0 0 5px 0px #9fa6ff;
+}
+
+.gantt_line_wrapper {
+	/* top: 407px !important; */
+}
+
+.gantt_line_wrapper .gantt_link_line_right {
+	background: blue;
+}
+.gantt_line_wrapper .gantt_link_line_left {
+	background: blue;
+}
+.gantt_line_wrapper .gantt_link_line_up {
+	background: blue;
+}
+.gantt_line_wrapper .gantt_link_line_down {
+	background: blue;
+}
+.gantt_task_line .gantt_task_progress {
+	/* opacity: 0.3; */
+	/* background-color: #444444; */
+	/* background: url(../img/taskbg.gif) repeat-x; */
+	background-color: blue;
+}
+
+/* 处理关键路径箭线被遮挡 */
+.gantt_critical_link .gantt_line_wrapper > div {
+	position: absolute;
+	z-index: 1;
+}
+
+.gantt_grid_data .gantt_cell {
+	border-right: 1px solid #ececec;
+}
+
+.gantt_grid_data .gantt_cell.gantt_last_cell {
+	border-right: none;
+}
+
+.gantt_tree_icon.gantt_folder_open,
+.gantt_tree_icon.gantt_file,
+.gantt_tree_icon.gantt_folder_closed {
+	display: none;
+}
+
+.gantt_task .gantt_task_scale .gantt_scale_cell,
+.gantt_grid_scale .gantt_grid_head_cell {
+	color: #5c5c5c;
+}
+
+.gantt_row,
+.gantt_cell {
+	border-color: #cecece;
+}
+
+.gantt_grid_scale .gantt_grid_head_cell {
+	border-right: 1px solid #cecece !important;
+}
+
+.gantt_grid_scale .gantt_grid_head_cell.gantt_last_cell {
+	border-right: none !important;
+}
+
+.gantt_task_row,
+.gantt_task_cell {
+	border: none;
+}
+
+.weekend {
+	background: #f4f7f4 !important;
+}
+
+.gantt_selected .weekend {
+	background: #fff3a1 !important;
+}
+
+.gantt_bar_milestone {
+	background: none;
+}
+
+.fa {
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	opacity: 0.2;
+	padding: 2px;
+}
+
+.fa:hover {
+	opacity: 1;
+}
+
+.fa-pencil {
+	color: #ffa011;
+}
+
+.fa-plus {
+	color: #328ea0;
+}
+
+.fa-times {
+	color: red;
+}
