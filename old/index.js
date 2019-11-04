@@ -1,3 +1,12 @@
+/*
+ * @Description:
+ * @Version:
+ * @Company: ZD
+ * @Author: Ivesein Zhang
+ * @Date: 2019-09-09 11:07:21
+ * @LastEditors: Ivesein Zhang
+ * @LastEditTime: 2019-09-16 15:20:17
+ */
 ;(function(KDApi, $) {
 	function MyComponent(model) {
 		this._setModel(model)
@@ -298,8 +307,6 @@
 															gantt.config.drag_progress = true
 															gantt.config.work_time = true
 															gantt.config.details_on_create = true
-															gantt.config.auto_scheduling_descendant_links = true  //允许或禁止创建从父任务（项目）到其子任务的链接
-															gantt.config.auto_types = true;  //自动将具有子任务的任务转换为项目，将不具有子任务的项目转换回任务
 															// 添加自动规划
 															gantt.config.auto_scheduling = true
 															gantt.config.auto_scheduling_strict = true
@@ -800,5 +807,5 @@
 			})
 		})
 	}
-	KDApi.register("sxzd_bim_xmgl_gantt_v1.0", MyComponent)
+	KDApi.register("zd_gantt_V1.0.201909.1", MyComponent)
 })(window.KDApi, jQuery)

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>中达-Gantt</title>
 	<script src="../js/dhtmlxgantt.js?v=6.2.4"></script>
-	<script src="https://export.dhtmlx.com/gantt/api.js?v=6.2.4"></script>
-	<script src="../js/dhx_file_dnd.js"></script>
 	<script src="../js/locale_cn.js"></script>
 	<script src="../js/dhtmlxgantt_critical_path.js"></script>
 	<script src="../js/dhtmlxgantt_auto_scheduling.js"></script>
@@ -22,19 +20,8 @@
 	<script src="../js/testdata_with_planned_date.js"></script>
 </head>
 
-<body>
+<body> -->
 	<div class="container">
-		<!-- load mmp -->
-		<div class="gantt_control" style="width:100%; height:4%; text-align: center;">
-			<p>
-				<form id="mspImport" action="" method="POST" enctype="multipart/form-data">
-					<input type="file" id="mspFile" name="file"
-						accept=".mpp,.xml, text/xml, application/xml, application/vnd.ms-project, application/msproj, application/msproject, application/x-msproject, application/x-ms-project, application/x-dos_ms_project, application/mpp, zz-application/zz-winassoc-mpp" />
-					<button id="mspImportBtn" type="submit">开始加载数据</button>
-				</form>
-			</p>
-		</div>
-		<!-- /load mmp -->
 		<div class="btn-box" style="width:100%; height:4%">
 			<button onclick="gantt.undo()">
 				<i class="iconfont icon-undo"></i>后退
@@ -66,11 +53,11 @@
 		</div>
 		<div
 			id="gantt_here"
-			style="width:100%; flex:1;box-sizing: border-box"
+			style="width:100%; height:96%;box-sizing: border-box"
 		></div>
 	</div>
 
-	<script>
+	<!-- <script>
 		// 添加任务基准
 		gantt.locale.labels.baseline_enable_button = "设置基准"
 		gantt.locale.labels.baseline_disable_button = "移除基准"
@@ -311,23 +298,6 @@
 		function save() {
 			var json = gantt.serialize()
 			console.log("json>>>", json)
-			json.data.forEach(function(v) {
-				var task = gantt.getTask(v.id)
-				// console.log(gantt.getFreeSlack(task))
-
-				// if (v.type !== "project") {
-				if (gantt.isCriticalTask(v)) {
-					console.log(v.id)
-					v.isCriticalTask = true
-				} else {
-					v.isCriticalTask = false
-				}
-				// getFreeSlack
-				v.free_slack = gantt.getFreeSlack(task)
-				v.total_slack = gantt.getTotalSlack(v)
-				// }
-			})
-			console.log("json>>>", JSON.stringify(json))
 		}
 
 		// gantt 配置
@@ -341,14 +311,10 @@
 		gantt.config.drag_progress = true
 		gantt.config.work_time = true
 		gantt.config.details_on_create = true
-		gantt.config.auto_scheduling_descendant_links = true //允许或禁止创建从父任务（项目）到其子任务的链接
-		gantt.config.auto_types = true //自动将具有子任务的任务转换为项目，将不具有子任务的项目转换回任务
 		// 添加自动规划
 		gantt.config.auto_scheduling = true
-		gantt.config.auto_scheduling_strict = false //启用自动调度模式，在该模式下，任务将始终重新调度到尽可能早的日期
+		gantt.config.auto_scheduling_strict = true
 		gantt.config.auto_scheduling_compatibility = true
-		gantt.config.static_background = true;  // load mmp
-		// gantt.config.show_slack = true
 
 		// 从设置的项目开始日期自动计算各任务开始结束日期
 		gantt.config.schedule_from_end = false
@@ -555,7 +521,6 @@
 						{
 							view: "timeline",
 							scrollX: "scrollHor",
-							scrollable: true,
 							scrollY: "scrollVer"
 						},
 						{
@@ -650,70 +615,7 @@
 		gantt.ext.zoom.init(zoomConfig)
 		gantt.ext.zoom.setLevel("day")
 		//初始化甘特图
-		// gantt.init("gantt_here")
-		// -----------------------------------------  load mmp
-		gantt.attachEvent("onParse", function () { 
-				gantt.eachTask(function (task) {
-					if (gantt.hasChild(task.id)) {
-						task.type = 'project';
-						gantt.updateTask(task.id);
-					} else if (task.duration === 0) {
-						task.type = 'milestone';
-						gantt.updateTask(task.id);
-					}
-				});
-			});
-
-			// gantt.message("Upload <b>MPP</b> or <b>XML</b> Project file using 'Choose File' button or simply drag-and-drop it into the page");
-
-			if (!window.FormData) {
-				gantt.error("Your browsers does not support Ajax File upload, please open this demo in modern browser");
-			}
-
-			// gantt.config.static_background = true;
-
-			// gantt.config.xml_date = "%Y-%m-%d %H:%i";
-			gantt.init("gantt_here");
-
-			var fileDnD = fileDragAndDrop();
-			fileDnD.init(gantt.$container);
-
-			function sendFile(file) {
-				fileDnD.showUpload();
-				upload(file, function () {
-					fileDnD.hideOverlay();
-				})
-			}
-
-			function upload(file, callback) {
-				gantt.importFromMSProject({
-					data: file,
-					callback: function (project) {
-						if (project) {
-							gantt.clearAll();
-
-							if (project.config.duration_unit) {
-								gantt.config.duration_unit = project.config.duration_unit;
-							}
-
-							gantt.parse(project.data);
-						}
-
-						if (callback)
-							callback(project);
-					}
-				});
-			}
-
-			fileDnD.onDrop(sendFile);
-			var form = document.getElementById("mspImport");
-			form.onsubmit = function (event) {
-				event.preventDefault();
-				var fileInput = document.getElementById("mspFile");
-				if (fileInput.files[0])
-					sendFile(fileInput.files[0]);
-			};
-		// -----------------------------------------  load mmp
+		gantt.init("gantt_here")
 
 		//任务条右侧显示任务名称
 		gantt.templates.rightside_text = function(start, end, task) {
@@ -742,7 +644,7 @@
 			if (gantt.isSelectedTask(task.id)) return "gantt_selected"
 		}
 		//载入数据
-		// gantt.parse(projects_with_milestones)
+		gantt.parse(projects_with_milestones)
 
 		//缩放按钮功能
 		function zoomIn() {
@@ -896,4 +798,4 @@
 			gantt.performAction(name)
 		}
 	</script>
-</body>
+</body> -->

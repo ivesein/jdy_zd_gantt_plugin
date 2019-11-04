@@ -5,7 +5,7 @@
  * @Author: Ivesein Zhang
  * @Date: 2019-09-20 14:15:32
  * @LastEditors: zfq
- * @LastEditTime: 2019-09-29 18:37:05
+ * @LastEditTime: 2019-09-26 10:58:27
  */
 var projects_with_milestones = {
 	data: [
@@ -30,6 +30,9 @@ var projects_with_milestones = {
 			text: "增删改按钮功能",
 			start_date: "2019-09-18",
 			duration: "2",
+			deadline: "2019-09-20",
+			planned_start: "2019-09-18",
+			planned_end: "2019-09-20",
 			parent: "2",
 			progress: 0.2,
 			open: true
@@ -39,6 +42,9 @@ var projects_with_milestones = {
 			text: "导入数据按钮功能",
 			start_date: "2019-09-18",
 			duration: "2",
+			deadline: "2019-09-20",
+			planned_start: "2019-09-18",
+			planned_end: "2019-09-20",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -48,6 +54,9 @@ var projects_with_milestones = {
 			text: "导出数据按钮功能",
 			start_date: "2019-09-18",
 			duration: "2",
+			deadline: "2019-09-20",
+			planned_start: "2019-09-18",
+			planned_end: "2019-09-20",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -57,6 +66,9 @@ var projects_with_milestones = {
 			text: "按任务名称搜索功能",
 			start_date: "2019-09-18",
 			duration: "2",
+			deadline: "2019-09-20",
+			planned_start: "2019-09-18",
+			planned_end: "2019-09-20",
 			parent: "2",
 			progress: 0.2,
 			open: true
@@ -66,6 +78,9 @@ var projects_with_milestones = {
 			text: "前进后退按钮功能",
 			start_date: "2019-09-20",
 			duration: "2",
+			deadline: "2019-09-22",
+			planned_start: "2019-09-20",
+			planned_end: "2019-09-22",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -75,6 +90,9 @@ var projects_with_milestones = {
 			text: "时间尺度缩放按钮功能",
 			start_date: "2019-09-20",
 			duration: "2",
+			deadline: "2019-09-22",
+			planned_start: "2019-09-20",
+			planned_end: "2019-09-22",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -84,6 +102,9 @@ var projects_with_milestones = {
 			text: "关键路径按钮功能",
 			start_date: "2019-09-20",
 			duration: "2",
+			deadline: "2019-09-22",
+			planned_start: "2019-09-20",
+			planned_end: "2019-09-22",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -93,6 +114,9 @@ var projects_with_milestones = {
 			text: "自定义编辑框内容",
 			start_date: "2019-09-20",
 			duration: "5",
+			deadline: "2019-09-25",
+			planned_start: "2019-09-20",
+			planned_end: "2019-09-25",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -102,6 +126,9 @@ var projects_with_milestones = {
 			text: "修改甘特图任务条渲染样式",
 			start_date: "2019-09-23",
 			duration: "2",
+			deadline: "2019-09-25",
+			planned_start: "2019-09-23",
+			planned_end: "2019-09-25",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -111,6 +138,9 @@ var projects_with_milestones = {
 			text: "保存数据按钮功能",
 			start_date: "2019-09-23",
 			duration: "2",
+			deadline: "2019-09-25",
+			planned_start: "2019-09-23",
+			planned_end: "2019-09-25",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -120,6 +150,9 @@ var projects_with_milestones = {
 			text: "自定义grid内容",
 			start_date: "2019-09-23",
 			duration: "2",
+			deadline: "2019-09-25",
+			planned_start: "2019-09-23",
+			planned_end: "2019-09-25",
 			parent: "2",
 			progress: 0.1,
 			open: true
@@ -137,6 +170,9 @@ var projects_with_milestones = {
 			text: "将开发和的插件封装金蝶云自定义控件",
 			start_date: "2019-09-25",
 			duration: "3",
+			deadline: "2019-09-28",
+			planned_start: "2019-09-25",
+			planned_end: "2019-09-28",
 			parent: "14",
 			progress: 0.1,
 			open: true
@@ -161,7 +197,7 @@ var projects_with_milestones = {
 		}
 	],
 	links: [
-		{ id: "0", source: "3", target: "7", type: "0" }, //“0”–“fs完成到开始”，“1”–“ss开始到开始”，“2”–“ff完成到完成”，“3”–“sf开始到完成”
+		{ id: "0", source: "3", target: "7", type: "0", lag: 1 }, //“0”–“fs完成到开始”，“1”–“ss开始到开始”，“2”–“ff完成到完成”，“3”–“sf开始到完成”
 		{ id: "1", source: "4", target: "8", type: "0" },
 		{ id: "2", source: "5", target: "9", type: "0" },
 		{ id: "3", source: "6", target: "10", type: "0" },
